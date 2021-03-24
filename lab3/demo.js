@@ -39,7 +39,7 @@ const adder = () => {
     console.log(a+b);
     const newP = document.createElement("p");
     newP.innerHTML = `${a} + ${b} = ${a+b}`;
-
+    newP.classList = "btn btn-warning";
     $("#operations-list").append(newP);
     // $("#sub").hide("fast");
 
