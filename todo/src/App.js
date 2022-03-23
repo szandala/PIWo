@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Main from "./Pages/Main";
+import { useState } from "react";
+import Search from "./Pages/Search";
+import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [listOfToDos, setListOfToDos] = useState([
+    "Sprawdzić zadania",
+    "Wpisać oceny",
+    "Oblać Studentów",
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <h2>This is the header</h2>
       </header>
-    </div>
+      <main>
+        <BrowserRouter>
+          <nav>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/search">Search</NavLink>
+            <NavLink to="/border_collie">ni ma</NavLink>
+          </nav>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  listOfToDos={listOfToDos}
+                  setListOfToDos={setListOfToDos}
+                />
+              }
+            />
+            <Route
+              path="/search"
+              element={<Search listOfToDos={listOfToDos} />}
+            />
+            <Route path="/nein" element={<h1>Nie ma</h1>} />
+          </Routes>
+        </BrowserRouter>
+      </main>
+      <footer>footer</footer>
+    </>
   );
+  // <Main listOfToDos={listOfToDos} setListOfToDos={setListOfToDos}/>
 }
 
+// const App = () => {
+
+// }
 export default App;
