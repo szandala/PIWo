@@ -1,0 +1,33 @@
+- node.js
+- create-react-app
+- funkcyjny komponent
+- <header><h2>This is the header</h2></header>
+    <main>
+
+      <nav>
+    <a>link one</a>
+    <a>link two</a>
+    <a>link three</a>
+      </nav>
+
+      <Main />
+
+    </main>
+    <footer>footer</footer>
+
+
+- useState
+- props
+-.map
+
+- react-router-dom
+- Link (NavLink ale bez klasy active)
+- Routes/ Route
+- NavLink
+
+- class component
+- render
+- constructor
+- .filter
+
+ - wymagać kamerek
