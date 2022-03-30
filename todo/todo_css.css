@@ -1,0 +1,53 @@
+.App {
+    text-align: center;
+  }
+
+  .header, nav, main, footer {
+    margin: 2px;
+  }
+
+  header {
+    background-color: aqua;
+    min-height: 100px;
+
+  }
+  main {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  nav {
+    background-color: darkblue;
+    /* flex-grow: 1; */
+    flex-basis: 15%;
+  }
+
+  nav a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    border: 2px solid currentColor;
+  }
+
+  nav a:hover {
+    border: 2px solid gold;
+    color: gold;
+    border-radius: 2px;
+
+  }
+
+  nav a.active {
+    background-color: blue;
+  }
+
+  section {
+    background-color: gray;
+    flex-grow: 5;
+    flex-basis: 50%;
+  }
+
+  footer {
+    background-color: midnightblue;
+    min-height: 100px;
+  }
