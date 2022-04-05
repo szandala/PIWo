@@ -29,3 +29,5 @@
 - render
 - constructor
 - .filter
+
+ - wymagać kamerek

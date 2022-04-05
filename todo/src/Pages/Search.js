@@ -1,29 +1,37 @@
 import React from 'react';
 
+
 class Search extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {query: ""};
 
+        this.state = {
+            query: "abc"
+        }
     }
 
-    handleChange = (event) => {
-        this.setState({query: event.target.value});
+    updateQuery = (event) => {
+        this.setState({
+            query: event.target.value
+        });
     }
+
 
     render () {
-        const listOfToDosHTML = this.props.listOfToDos.filter((it)=>{
-            return it.includes(this.state.query)
-        }).map((it, i) => <p key={i}>{it}</p>);
+        const toDosHTML = this.props.toDos
+        .filter((it) => it.includes(this.state.query))
+        .map((it, i)=>{
+            return <p key={i}>{it}</p>
+        });
 
         return (
             <div>
-            <input type="text" value={this.state.query} onChange={this.handleChange}/>
-                {listOfToDosHTML}
+                <input value={this.state.query} onChange={this.updateQuery}/>
+                {toDosHTML}
             </div>
         )
     }
-
 }
+
 
 export default Search;
