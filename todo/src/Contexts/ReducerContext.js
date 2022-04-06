@@ -8,6 +8,13 @@ export const initState = {
 }
 
 
+<<<<<<< HEAD
+=======
+const decrement = (state) => {
+    return {...state, counter: state.counter -1 }
+}
+
+>>>>>>> 866d23b (Redux app)
 export const reducer = (state, action) => {
     const {type, payload} = action;
     switch(type){
@@ -21,8 +28,4 @@ export const reducer = (state, action) => {
             console.error(`Incorrect action type ${type}`)
     }
     return state;
-}
-
-const decrement = (state) => {
-    return {...state, counter: state.counter -1 }
 }
