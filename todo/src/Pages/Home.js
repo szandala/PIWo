@@ -1,12 +1,8 @@
-import { useState, useRef, useContext } from 'react';
-import NameContext from '../Contexts/NameContext';
+import { useState } from 'react';
+
 
 const Home = (props) => {
     const {setToDos, toDos} = props;
-    const inputRef = useRef();
-    const [name, setName] = useContext(NameContext);
-
-    console.log("Home rendered");
 
     const [newToDo, setNewToDo] = useState("");
     const toDosHTML = toDos.map((it, i)=>{
@@ -18,17 +14,13 @@ const Home = (props) => {
     }
 
     const handleNewToDo = () => {
-        // setToDos(toDos.concat([newToDo]));
-        // setNewToDo("");
-        setToDos(toDos.concat([inputRef.current.value]));
-        inputRef.current.value = "tomek";
+        setToDos(toDos.concat([newToDo]));
+        setNewToDo("");
     }
 
     return (
         <div>
-        {/* <input value={newToDo} onChange={handleNewInput} /> */}
-        <input value={name} onChange={(e)=>setName(e.target.value)} />
-        <input ref={inputRef} />
+        <input value={newToDo} onChange={handleNewInput} />
         <button onClick={handleNewToDo} type="button">Add </button>
 
         {toDosHTML}

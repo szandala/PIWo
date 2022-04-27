@@ -1,18 +1,12 @@
 import { useContext } from "react";
-import UserContext from "../Contexts/UserContext";
-import { ReducerContext } from "../Contexts/ReducerContext";
+import NameContext from "../Context/NameContext";
+import { ReducerContext } from "../Context/ReducerContext";
 
-const Footer = () => {
+const Footer = ()=>{
+    const [name] = useContext(NameContext);
+    const state = useContext(ReducerContext);
 
-    const [userName] = useContext(UserContext);
-    const [state] = useContext(ReducerContext);
-
-    return (
-    <footer style={{color: "white"}}>
-        footer UserName: {userName}<br/>
-        Counter={state.counter}
-        </footer>
-    )
+    return <footer>Context has {name} | Counter is {state.counter} </footer>
 }
 
 export default Footer;
