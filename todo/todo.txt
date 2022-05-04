@@ -1,7 +1,6 @@
 - kamerki
 https://jsonplaceholder.typicode.com/
 - install axios
-- multiple gets
 - useEffect useLayoutEffect
 - useRef (edytowanie bez rendera)
 - useContext
