@@ -7,14 +7,10 @@ export const initState = {
     user: ""
 }
 
-
-<<<<<<< HEAD
-=======
 const decrement = (state) => {
     return {...state, counter: state.counter -1 }
 }
 
->>>>>>> 866d23b (Redux app)
 export const reducer = (state, action) => {
     const {type, payload} = action;
     switch(type){
