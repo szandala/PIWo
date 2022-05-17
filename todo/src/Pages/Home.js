@@ -26,7 +26,7 @@ const Home = (props) => {
     return (
         <div>
         <input ref={myInput}/>
-        <input value={userName} style={{color: "red"}} onChange={e => setUserName(e.target.value)}/>
+        {/* <input value={userName} style={{color: "red"}} onChange={e => setUserName(e.target.value)}/> */}
         {/* <input value={newToDo} onChange={handleNewInput} /> */}
         <button onClick={handleNewToDo} type="button">Add new item </button>
 
