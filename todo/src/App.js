@@ -7,20 +7,28 @@ import axios from "axios";
 import UserContext from "./Contexts/UserContext";
 import Footer from "./Pages/Footer";
 import {reducer, initState, ReducerContext} from "./Contexts/ReducerContext";
+import Login from "./Pages/Login";
+
+import { auth } from "./firebase/init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {logout} from "./firebase/users"
+import {getAllToDos} from './firebase/todos'
 
 function App() {
   const [toDos, setToDos] = useState([]);
 
   const [state, dispatcher] = useReducer(reducer, initState);
 
+  const [corgi] = useAuthState(auth);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/dummy/todos.json")
-    .then(res => {
-      const todos = res.data.map(it=>it.title);
-      setToDos(todos);
-    });
-      }, [])
+    // axios.get("http://localhost:3000/dummy/todos.json")
+    // .then(res => {
+    //   const todos = res.data.map(it=>it.title);
+    //   setToDos(todos);
+    // });
+    getAllToDos(corgi).then((data) => setToDos(data));
+      }, [corgi])
 
   return (
     <div className="App">
@@ -36,6 +44,9 @@ function App() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/search">Search</NavLink>
           <NavLink to="/nie_ma">nie klikać</NavLink>
+          { corgi
+          && <button onClick={logout}>Wyloguj {corgi.displayName}</button>
+          || <NavLink to="/login">Zaloguj</NavLink>}
         </nav>
         {/* <button onClick={()=>dispatcher({type: "increment"})}>Increment Reducer</button>
         <button onClick={()=>dispatcher({type: "decrement"})}>decrement Reducer</button> */}
@@ -44,6 +55,7 @@ function App() {
           <Route path="/" element={<Home toDos={toDos} setToDos={setToDos} />}/>
           <Route path="/nie_ma" element={<h2>Koniec internetu</h2>} />
           <Route path="/search" element={<Search toDos={toDos}/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
         </BrowserRouter>
       </main>
