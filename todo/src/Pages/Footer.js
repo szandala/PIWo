@@ -5,7 +5,7 @@ import { ReducerContext } from "../Contexts/ReducerContext";
 const Footer = ()=>{
     const [name] = useContext(UserContext);
     const [state] = useContext(ReducerContext);
-    console.log({state})
+
     return <footer style={{color: "white"}}>Context has {name} | Counter is {state.counter} </footer>
 }
 

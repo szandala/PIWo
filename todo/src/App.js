@@ -37,8 +37,8 @@ function App() {
           <NavLink to="/search">Search</NavLink>
           <NavLink to="/nie_ma">nie klikać</NavLink>
         </nav>
-        <button onClick={()=>dispatcher({type: "increment"})}>Increment Reducer</button>
-        <button onClick={()=>dispatcher({type: "decrement"})}>decrement Reducer</button>
+        {/* <button onClick={()=>dispatcher({type: "increment"})}>Increment Reducer</button>
+        <button onClick={()=>dispatcher({type: "decrement"})}>decrement Reducer</button> */}
         <Routes>
 
           <Route path="/" element={<Home toDos={toDos} setToDos={setToDos} />}/>
