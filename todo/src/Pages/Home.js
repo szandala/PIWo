@@ -1,9 +1,16 @@
 import { useRef, useContext } from 'react';
 import UserContext from '../Contexts/UserContext';
 
+import { auth } from "../firebase/init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { addNewToDo } from '../firebase/todos';
+
+
 const Home = (props) => {
     const {setToDos, toDos} = props;
     const [userName, setUserName] = useContext(UserContext);
+
+    const [userInny] = useAuthState(auth);
 
 
     const myInput = useRef();
@@ -11,6 +18,7 @@ const Home = (props) => {
         return <p key={i}>{it}</p>
     });
     const handleNewToDo = () => {
+        addNewToDo(userInny, myInput.current.value);
 
         setToDos(toDos.concat([myInput.current.value]));
         myInput.current.value = "";
