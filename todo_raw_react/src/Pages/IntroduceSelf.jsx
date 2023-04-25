@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../Data/UserContext";
+
 
 const IntroduceSelf = () => {
 
-    const [ name, setName] = useState("");
-
+    // const [ name, setName] = useState("");
+    const [userName, setUserName] = useContext(UserContext);
     return (
         <div className="App">
-            <input type="text" value={name} onChange={e=>setName(e.target.value)}></input>
-            <h2>Hello, my name is {name}</h2>
+            <input type="text" value={userName} onChange={e=>setUserName(e.target.value)}></input>
+            <h2>Hello, my name is {userName}</h2>
         </div>
         );
 }
