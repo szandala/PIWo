@@ -25,6 +25,9 @@ export const reducer = (state, action) => {
             ...state,
             name: payload.name
         }
+        break;
+        default:
+            console.error(`Type ${type} unknown`)
     }
 
     return state;

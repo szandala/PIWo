@@ -6,6 +6,7 @@ const Menu = () => {
         <NavLink to="/search">Search</NavLink>
         <NavLink to="/introduce-self">Introduce Self</NavLink>
         <NavLink to="/counter">Counter managment</NavLink>
+        <NavLink to="/login">Login</NavLink>
     </nav>
 }
 
