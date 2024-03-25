@@ -1,6 +1,6 @@
 import { useState } from "react";
-import {useAuth} from "../Firebase/UserService";
-import { addNewToDo } from "../Firebase/TodoService";
+import { addNewToDo } from "../Firebase/todoservice";
+import { useAuth } from "../Firebase/userService";
 
 
 const Main = (props) => {
@@ -11,8 +11,7 @@ const Main = (props) => {
     const setToDoList = props.setToDoList;
 
     const [newTodo, setNewTodo] = useState("jajko");
-
-    const user = useAuth(); // TUTAJ
+    const user = useAuth();
 
     const handleNewTodo = (event) => {
         // console.log({event});
@@ -21,14 +20,14 @@ const Main = (props) => {
 
     const handleAddNewToDo = () => {
         setToDoList(toDoList.concat([newTodo]));
-        addNewToDo(user, newTodo); // TUTAJ
+        addNewToDo(user,newTodo);
         setNewTodo("");
+
     }
 
 
     return (
     <div className="App">
-        <h1> Hello there</h1>
         <input type="text" value={newTodo} onChange={handleNewTodo}></input>
         <button onClick={handleAddNewToDo}>Add to list</button>
         {toDoListHTML}

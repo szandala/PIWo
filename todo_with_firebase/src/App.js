@@ -1,7 +1,10 @@
-import { useEffect, useReducer, useState, useMemo, useCallback } from 'react';
+import { useEffect, useReducer, useState, useMemo } from 'react';
 import './App.css';
 
-import axios from 'axios';
+// import axios from 'axios';
+import { getAllToDos } from './Firebase/todoservice';
+import { useAuth } from './Firebase/userService';
+
 import { BrowserRouter } from 'react-router-dom';
 import Footer from './Components/Footer';
 import Menu from './Components/Menu';
@@ -9,10 +12,6 @@ import Routing from './Pages/Routing';
 
 import UserContext from './Data/UserContext';
 import { MyReducerContext, initState, reducer } from './Data/MyReducer';
-
-import { useAuth } from './Firebase/UserService';
-import { getAllToDos } from './Firebase/TodoService';
-
 function App() {
 
   const [state, dispatcher] = useReducer(reducer, initState);
@@ -21,7 +20,7 @@ function App() {
   const [toDoList, setToDoList] = useState([]);
   // console.log(toDoList);
   const user = useAuth();
-
+  console.log({user})
   useEffect(()=>{
     // const promise = axios.get("./data/todos.json");
     // promise.then(response => {
@@ -33,9 +32,11 @@ function App() {
     //   setToDoList(response.data)
     // });
     if(user)
-      getAllToDos(user).then(todos => setToDoList(todos));
-    else
-      setToDoList([]);
+    getAllToDos(user).then(response =>{
+      console.log({response});
+      setToDoList(response);
+    })
+
   }, [user]);
 
   const value = useMemo(()=>{console.log("Calling useMemo"); return toDoList.length;}, [toDoList]);

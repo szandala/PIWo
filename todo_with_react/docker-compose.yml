@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  apka:
+    build: ./
+    volumes:
+    - ./:/app
+    ports:
+    - 3000:3000
+
+  db:
+    image: mongo:jammy
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=admin
+    - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+    - ./db/:/data/db
+    ports:
+    -

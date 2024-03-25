@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #ff0095;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -83,6 +83,6 @@ section {
 }
 
 footer {
-  background-color: fuchsia;
+  background-color: midnightblue;
   min-height: 100px;
 }
