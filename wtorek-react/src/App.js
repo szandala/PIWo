@@ -1,25 +1,26 @@
 import './App.css';
 import Home from "./Pages/Home";
 import New from './Pages/New';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { RouterProvider,  Outlet,  Route, createBrowserRouter, createRoutesFromElements, NavLink } from 'react-router-dom';
+// odczytujemy dane z pliku z danymi
+import startingTodos from './data';
+import { useState } from 'react';
 
-const router = createBrowserRouter([
-  {
-    element: <AppLayout/>,
-    children: [
-      {
-        path: "/",
-        element: <Home/>
-      },
-      {
-        path: "/new",
-        element: <New/>
-      },
-    ]
-  }
-])
+
+// ten zapis wydaje mi się prostszy
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<AppLayout />}>
+      <Route path="" element={<Home />} />
+      <Route path="new" element={<New />} />
+    </Route>
+  )
+);
 
 function AppLayout() {
+
+  // z danych tworzymy stan, który będziemy mogli sobie przekazywać
+  const [todos, setTodos] = useState(startingTodos);
 
   return (
     <div>
@@ -27,12 +28,15 @@ function AppLayout() {
       <header>To jest header</header>
       <div className='main-nav-container'>
 
-        <nav>
-          <a>Link 1</a>
-          <a>Link 2</a>
-        </nav>
+          <nav>
+            {/* // zamieniamy <a> na NavLink i za pomocą 'to=' mówimy gdzie ma nas przenieść */}
+            <NavLink to="/" className="App-mini-button">Home</NavLink>
+            <NavLink to="/new" className="App-mini-button">Add New</NavLink>
+          </nav>
 
-        <Outlet/>
+          {/* // Outlet to obiekt, który zastępuje to, co będzie renderowane */}
+          {/* // 'context' to specjalny, UKRYTY props, który możemy odcyztać w jego dzieciach */}
+          <Outlet context={[todos, setTodos]}/>
 
         <footer>A tu jest stopka</footer>
       </div>
@@ -41,5 +45,6 @@ function AppLayout() {
 }
 
 const App = () => <RouterProvider router={router} />
+
 
 export default App;

@@ -1,20 +1,20 @@
 import { useState } from "react";
 import ListItem from "../Components/ListItem";
-
+// specjalny metoda do odczytywania ukrytego contextu
+import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
 
-  const [todoList, setTodoList] = useState([
-    "Zrobić pranie",
-    "Kupić samochód",
-    "Zrobić pizzę",
-  ]);
+  // const [todoList, setTodoList] = useState();
+  // wczesniej mieliśmy tutaj obiekt z todoListą.
+  // teraz tworzymy go w App.js i przekazujemy
+  const [todoList, setTodoList] = useOutletContext()
 
   const [query, setQuery] = useState("");
 
   const todoListHTML = todoList
-    .filter(it => it.includes(query))
-    .map(it => <ListItem key={it} text={it} jamnik={"pies"}/>)
+    .filter(it => it.text.includes(query))
+    .map(it => <ListItem key={it.id} text={it.text} jamnik={"pies"}/>)
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
