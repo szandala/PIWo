@@ -6,7 +6,7 @@ const ListItem = ({text, jamnik}) => {
 
   return <li
     onClick={()=>setStriked(!striked)}
-    className={striked && "striked"}
+    className={striked ? "striked" : ""}
     >{text} - {jamnik}</li>
 }
 

@@ -4,7 +4,10 @@ import New from './Pages/New';
 import { RouterProvider,  Outlet,  Route, createBrowserRouter, createRoutesFromElements, NavLink } from 'react-router-dom';
 // odczytujemy dane z pliku z danymi
 import startingTodos from './data';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Login from './Pages/Login';
+import { logout, useUser } from './data/userService';
+import { readTodos } from './data/todoService';
 
 
 // ten zapis wydaje mi się prostszy
@@ -13,6 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<AppLayout />}>
       <Route path="" element={<Home />} />
       <Route path="new" element={<New />} />
+      <Route path="login" element={<Login />} />
     </Route>
   )
 );
@@ -20,12 +24,27 @@ const router = createBrowserRouter(
 function AppLayout() {
 
   // z danych tworzymy stan, który będziemy mogli sobie przekazywać
-  const [todos, setTodos] = useState(startingTodos);
+  const [todos, setTodos] = useState([]);
+  const user = useUser();
+
+  useEffect(()=>{
+
+    readTodos().then(docs => setTodos(docs))
+
+  }, [user]);
+
 
   return (
     <div>
 
-      <header>To jest header</header>
+      <header>
+        <span>To jest header</span>
+        {!!user || <NavLink to="/login" className="App-mini-button">Login</NavLink> }
+        {!!user && <button className="App-mini-button" onClick={logout}>
+          Logout {user?.displayName}
+        </button>}
+
+      </header>
       <div className='main-nav-container'>
 
           <nav>

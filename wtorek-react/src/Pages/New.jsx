@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ListItem from "../Components/ListItem";
 import { useOutletContext } from "react-router-dom";
+import { createTodo } from "../data/todoService";
 
 const New = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -27,6 +28,7 @@ const New = () => {
       }
       setTodoList(todoList.concat([tempTodo]));
       setNewTodo("")
+      createTodo(tempTodo);
     }
   }
 
