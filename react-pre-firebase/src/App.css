@@ -1,0 +1,192 @@
+:root {
+  --bg-color: #282c34;
+  --border-color: slateblue;
+  --active-bg-color: #484c54;
+  --light-bg-color: #484c54;
+}
+
+* {
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+}
+
+header {
+  background-color:  var(--bg-color);
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+
+  position: fixed; /* Fix the header at the top of the page */
+  top: 0; /* Align the top edge of the header with the top of the viewport */
+  left: 0; /* Align the left edge of the header with the left of the viewport */
+  width: 100%; /* Make the header extend across the full width of the viewport */
+  height: calc(50px + 2vmin); /* Set a fixed height for the header */
+  z-index: 1000; /* Ensure the header is above other content */
+}
+
+footer {
+  background-color:  var(--bg-color);
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(5px + 1vmin);
+
+  position: fixed; /* Fix the header at the top of the page */
+  bottom: 0; /* Align the top edge of the header with the top of the viewport */
+  left: 0; /* Align the left edge of the header with the left of the viewport */
+  width: 100%; /* Make the header extend across the full width of the viewport */
+  height: calc(30px + 2vmin); /* Set a fixed height for the header */
+  z-index: 1000; /* Ensure the header is above other content */
+}
+
+.App-button {
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  padding: calc(1px + 0.5vmin);
+  font-size: calc(7px + 2vmin);
+  margin: 2px;
+  text-decoration: none;
+}
+
+.App-button:hover, .App-mini-button:hover {
+  background-color: var(--active-bg-color);
+}
+
+.App-link {
+  color: #61dafb;
+  cursor: pointer;
+}
+
+/* main {
+  margin-top: calc(50px + 2vmin);
+  background-color: var(--light-bg-color);
+  width: 100%;
+  min-height: calc(100vh - 50px - 2vmin);
+  padding: calc(2px + 0.5vmin);
+  left: calc(100px + 2vmin);
+}
+
+nav {
+  position: fixed;
+  top: calc(50px + 2vmin);
+  bottom: calc(30px + 2vmin);
+  left: 0;
+  width: calc(100px + 2vmin);
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+} */
+
+.main-nav-container {
+  display: grid;
+  grid-template-columns: 1fr 11fr;
+  width: 100%;
+  min-height: calc(100vh - 50px - 2vmin);
+  top: calc(50px + 2vmin);
+  position: absolute;
+}
+
+nav {
+  grid-column: 1 / 2; /* Assign nav to the first column */
+  height: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+main {
+  grid-column: 2 / 3; /* Assign main to the second column */
+  background-color: var(--light-bg-color);
+  padding: calc(2px + 0.5vmin);
+  overflow-y: auto; /* Add scroll for overflow content */
+}
+
+
+
+dialog {
+  background-color: var(--bg-color);
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  border: 0;
+  border-radius: 10px;
+  padding: 5px;
+  * {
+    margin: 5px;
+  }
+  .App-button {
+    font-size: calc(5px + 1vmin);
+    border: 1px solid var(--border-color);
+  }
+}
+
+.App-mini-button {
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  padding: calc(1px + 0.5vmin);
+  margin: 2px;
+  text-decoration: none;
+
+  font-size: calc(5px + 1vmin);
+  border: 1px solid var(--border-color);
+}
+
+.App-input {
+  padding: 2px;
+  font-size: calc(5px + 1vmin);
+  color: black;
+}
+
+p, li{
+  font-size: calc(5px + 1vmin);
+}
+
+.striked {
+  text-decoration: line-through;
+}
+
+
+.main-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20%;
+}
